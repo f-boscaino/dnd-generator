@@ -1,5 +1,6 @@
 package com.generator;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,11 +10,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class PlayerTest {
 
+    private Player player;
+
+    @BeforeEach
+    public void setUp() {
+        player = new Player();
+    }
+
     @Test
     public void aPlayerCanCreateACharacter() {
-        //Given
-        Player player = new Player();
-
         //When
         Character newCharacter = player.createCharacter();
 
@@ -24,7 +29,6 @@ class PlayerTest {
     @Test
     public void aPlayerHasAListOfCharacters() {
         //Given
-        Player player = new Player();
         Character newCharacter = player.createCharacter();
 
         //When
@@ -39,7 +43,6 @@ class PlayerTest {
     @Test
     public void aPlayerCanDeleteACharacter() {
         //Given
-        Player player = new Player();
         Character newCharacter = player.createCharacter();
 
         //When
@@ -52,7 +55,6 @@ class PlayerTest {
     @Test
     public void aPlayerWithMoreCharactersCanDeleteOnlyOneOfThem() {
         //Given
-        Player player = new Player();
         Character newCharacter = player.createCharacter();
         player.createCharacter();
 
