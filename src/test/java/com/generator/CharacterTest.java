@@ -11,20 +11,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CharacterTest {
-    private Character newCharacter;
+    private Character character;
 
     @BeforeEach
     public void setUp() {
-        newCharacter = new Character(UUID.randomUUID());
+        character = new Character(UUID.randomUUID());
+    }
+
+    @Test
+    public void aNewCharacterShouldBeLevel1() {
+        //Then
+        assertEquals(1, character.getLevel());
     }
 
     @Test
     public void aHumanCharacterShouldHaveAllStatsPlusOne() {
         //Given
-        newCharacter.setRace(Race.HUMAN);
+        character.setRace(Race.HUMAN);
 
         //When
-        AbilityScore abilityScore = newCharacter.getAbilityScore();
+        AbilityScore abilityScore = character.getAbilityScore();
 
         //Then
         assertEquals(11, abilityScore.strength());
@@ -38,10 +44,10 @@ public class CharacterTest {
     @Test
     public void aDwarfCharacterShouldHaveJustTheConstitutionBonus() {
         //Given
-        newCharacter.setRace(Race.DWARF);
+        character.setRace(Race.DWARF);
 
         //When
-        AbilityScore abilityScore = newCharacter.getAbilityScore();
+        AbilityScore abilityScore = character.getAbilityScore();
 
         //Then
         assertEquals(10, abilityScore.strength());
@@ -54,10 +60,10 @@ public class CharacterTest {
     @Test
     public void aHillDwarfCharacterShouldHaveConstitutionAndWisdomBonus() {
         //Given
-        newCharacter.setRace(Race.HILL_DWARF);
+        character.setRace(Race.HILL_DWARF);
 
         //When
-        AbilityScore abilityScore = newCharacter.getAbilityScore();
+        AbilityScore abilityScore = character.getAbilityScore();
 
         //Then
         assertEquals(10, abilityScore.strength());
@@ -71,10 +77,10 @@ public class CharacterTest {
     @Test
     public void aHumanShouldBeMediumSize() {
         //Given
-        newCharacter.setRace(Race.HUMAN);
+        character.setRace(Race.HUMAN);
 
         //When
-        Size size = newCharacter.getSize();
+        Size size = character.getSize();
 
         //Then
         assertEquals(Size.MEDIUM, size);
@@ -83,10 +89,10 @@ public class CharacterTest {
     @Test
     public void anHalflingShouldBeSmallSize() {
         //Given
-        newCharacter.setRace(Race.HALFLING);
+        character.setRace(Race.HALFLING);
 
         //When
-        Size size = newCharacter.getSize();
+        Size size = character.getSize();
 
         //Then
         assertEquals(Size.SMALL, size);
@@ -95,10 +101,10 @@ public class CharacterTest {
     @Test
     public void aHumanShouldHave30ftWalkSpeed() {
         //Given
-        newCharacter.setRace(Race.HUMAN);
+        character.setRace(Race.HUMAN);
 
         //When
-        Speed speed = newCharacter.getSpeed();
+        Speed speed = character.getSpeed();
 
         //Then
         assertEquals(30, speed.walk());
@@ -107,10 +113,10 @@ public class CharacterTest {
     @Test
     public void aDwarfShouldHave20ftWalkSpeed() {
         //Given
-        newCharacter.setRace(Race.DWARF);
+        character.setRace(Race.DWARF);
 
         //When
-        Speed speed = newCharacter.getSpeed();
+        Speed speed = character.getSpeed();
 
         //Then
         assertEquals(20, speed.walk());
@@ -119,10 +125,10 @@ public class CharacterTest {
     @Test
     public void anElfKnowsCommonAndElvishLanguage() {
         //Given
-        newCharacter.setRace(Race.ELF);
+        character.setRace(Race.ELF);
 
         //When
-        Set<Language> languages = newCharacter.getLanguages();
+        Set<Language> languages = character.getLanguages();
 
         //Then
         assertEquals(2, languages.size());
@@ -133,10 +139,10 @@ public class CharacterTest {
     @Test
     public void aDwarfKnowsCommonAndDwarvishLanguage() {
         //Given
-        newCharacter.setRace(Race.DWARF);
+        character.setRace(Race.DWARF);
 
         //When
-        Set<Language> languages = newCharacter.getLanguages();
+        Set<Language> languages = character.getLanguages();
 
         //Then
         assertEquals(2, languages.size());

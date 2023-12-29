@@ -5,6 +5,7 @@ import java.util.*;
 public final class Character {
     private final UUID id;
     private String name;
+    private int level = 1;
     private CharacterSettings settings;
     private Race race;
 
@@ -51,11 +52,15 @@ public final class Character {
 
     public Speed getSpeed() {
         return race.getSpeed();
-        //TODO add other stuff here (full plate, encumberance, etc.)
+        //TODO add other stuff here (full plate, encumbrance, etc.)
     }
 
     public Set<Language> getLanguages() {
         return new HashSet<>(race.getLanguages());
         //TODO add background/class languages here
+    }
+
+    public int getLevel() {
+        return level;
     }
 }
