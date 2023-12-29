@@ -7,19 +7,9 @@ public final class Character {
     private String name;
     private CharacterSettings settings;
     private Race race;
-    private final AbilityScore abilityScore;
 
     public Character(UUID id) {
         this.id = id;
-        int START_ABILITY_SCORE = 10;
-        abilityScore = new AbilityScore(
-                START_ABILITY_SCORE,
-                START_ABILITY_SCORE,
-                START_ABILITY_SCORE,
-                START_ABILITY_SCORE,
-                START_ABILITY_SCORE,
-                START_ABILITY_SCORE
-        );
     }
 
     public UUID getId() {
@@ -51,6 +41,7 @@ public final class Character {
     }
 
     public AbilityScore getAbilityScore() {
+        AbilityScore abilityScore = new AbilityScore();
         return race.addBonusToAbilities(abilityScore);
     }
 }

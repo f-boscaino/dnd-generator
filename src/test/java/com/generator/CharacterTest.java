@@ -17,25 +17,35 @@ public class CharacterTest {
 
     @Test
     public void aHumanCharacterShouldHaveAllStatsPlusOne() {
+        //Given
         newCharacter.setRace(Race.HUMAN);
 
-        assertEquals(11, newCharacter.getAbilityScore().strength());
-        assertEquals(11, newCharacter.getAbilityScore().dexterity());
-        assertEquals(11, newCharacter.getAbilityScore().constitution());
-        assertEquals(11, newCharacter.getAbilityScore().intelligence());
-        assertEquals(11, newCharacter.getAbilityScore().wisdom());
-        assertEquals(11, newCharacter.getAbilityScore().charisma());
+        //When
+        AbilityScore abilityScore = newCharacter.getAbilityScore();
+
+        //Then
+        assertEquals(11, abilityScore.strength());
+        assertEquals(11, abilityScore.dexterity());
+        assertEquals(11, abilityScore.constitution());
+        assertEquals(11, abilityScore.intelligence());
+        assertEquals(11, abilityScore.wisdom());
+        assertEquals(11, abilityScore.charisma());
     }
 
     @Test
     public void aDwarfCharacterShouldHaveJustTheConstitutionBonus() {
+        //Given
         newCharacter.setRace(Race.DWARF);
 
-        assertEquals(10, newCharacter.getAbilityScore().strength());
-        assertEquals(10, newCharacter.getAbilityScore().dexterity());
-        assertEquals(12, newCharacter.getAbilityScore().constitution());
-        assertEquals(10, newCharacter.getAbilityScore().intelligence());
-        assertEquals(10, newCharacter.getAbilityScore().wisdom());
-        assertEquals(10, newCharacter.getAbilityScore().charisma());
+        //When
+        AbilityScore abilityScore = newCharacter.getAbilityScore();
+
+        //Then
+        assertEquals(10, abilityScore.strength());
+        assertEquals(10, abilityScore.dexterity());
+        assertEquals(12, abilityScore.constitution());
+        assertEquals(10, abilityScore.intelligence());
+        assertEquals(10, abilityScore.wisdom());
+        assertEquals(10, abilityScore.charisma());
     }
 }

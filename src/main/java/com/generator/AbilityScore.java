@@ -8,4 +8,8 @@ public record AbilityScore(
         int wisdom,
         int charisma
 ) {
+
+    AbilityScore() {
+        this(10, 10, 10, 10, 10, 10);
+    }
 }
