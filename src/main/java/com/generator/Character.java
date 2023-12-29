@@ -44,4 +44,13 @@ public final class Character {
         AbilityScore abilityScore = new AbilityScore();
         return race.addBonusToAbilities(abilityScore);
     }
+
+    public Size getSize() {
+        return race.getSize();
+    }
+
+    public Speed getSpeed() {
+        return race.getSpeed();
+        //TODO add other stuff here (full plate, encumberance, etc.)
+    }
 }

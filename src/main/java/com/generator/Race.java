@@ -1,7 +1,7 @@
 package com.generator;
 
 public enum Race {
-    HUMAN(new HumanBonusStrategy()), DWARF(new DwarfBonusStrategy());
+    HUMAN(new HumanBonusStrategy()), DWARF(new DwarfBonusStrategy()), HILL_DWARF(new HillDwarfBonusStrategy()), HALFLING(new HalflingBonusStrategy());
 
     private final BonusStrategy bonusStrategy;
 
@@ -11,6 +11,14 @@ public enum Race {
 
     public AbilityScore addBonusToAbilities(AbilityScore start) {
         return bonusStrategy.addBonus(start);
+    }
+
+    public Size getSize() {
+        return bonusStrategy.getSize();
+    }
+
+    public Speed getSpeed() {
+        return bonusStrategy.getSpeed();
     }
 
     private static class BonusStrategy {
@@ -49,6 +57,14 @@ public enum Race {
                     start.charisma() + getCharismaBonus()
             );
 
+        }
+
+        public Size getSize() {
+            return Size.MEDIUM;
+        }
+
+        public Speed getSpeed() {
+            return new Speed(30, 15, 15);
         }
     }
 
@@ -89,6 +105,29 @@ public enum Race {
         @Override
         public int getConstitutionBonus() {
             return 2;
+        }
+
+        public Speed getSpeed() {
+            return new Speed(20, 10, 10);
+        }
+    }
+
+    private static class HillDwarfBonusStrategy extends DwarfBonusStrategy {
+        @Override
+        public int getWisdomBonus() {
+            return 1;
+        }
+    }
+
+    private static class HalflingBonusStrategy extends BonusStrategy {
+        @Override
+        public int getDexterityBonus() {
+            return 2;
+        }
+
+        @Override
+        public Size getSize() {
+            return Size.SMALL;
         }
     }
 }
