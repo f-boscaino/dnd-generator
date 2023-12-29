@@ -1,6 +1,6 @@
 package com.generator;
 
-import java.util.UUID;
+import java.util.*;
 
 public final class Character {
     private final UUID id;
@@ -52,5 +52,10 @@ public final class Character {
     public Speed getSpeed() {
         return race.getSpeed();
         //TODO add other stuff here (full plate, encumberance, etc.)
+    }
+
+    public Set<Language> getLanguages() {
+        return new HashSet<>(race.getLanguages());
+        //TODO add background/class languages here
     }
 }

@@ -3,9 +3,12 @@ package com.generator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
 import java.util.UUID;
 
+import static com.generator.Language.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CharacterTest {
     private Character newCharacter;
@@ -112,5 +115,34 @@ public class CharacterTest {
         //Then
         assertEquals(20, speed.walk());
     }
+
+    @Test
+    public void anElfKnowsCommonAndElvishLanguage() {
+        //Given
+        newCharacter.setRace(Race.ELF);
+
+        //When
+        Set<Language> languages = newCharacter.getLanguages();
+
+        //Then
+        assertEquals(2, languages.size());
+        assertTrue(languages.contains(COMMON));
+        assertTrue(languages.contains(ELVISH));
+    }
+
+    @Test
+    public void aDwarfKnowsCommonAndDwarvishLanguage() {
+        //Given
+        newCharacter.setRace(Race.DWARF);
+
+        //When
+        Set<Language> languages = newCharacter.getLanguages();
+
+        //Then
+        assertEquals(2, languages.size());
+        assertTrue(languages.contains(COMMON));
+        assertTrue(languages.contains(DWARVISH));
+    }
+
 
 }

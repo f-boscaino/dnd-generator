@@ -1,7 +1,10 @@
 package com.generator;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public enum Race {
-    HUMAN(new HumanBonusStrategy()), DWARF(new DwarfBonusStrategy()), HILL_DWARF(new HillDwarfBonusStrategy()), HALFLING(new HalflingBonusStrategy());
+    HUMAN(new HumanBonusStrategy()), DWARF(new DwarfBonusStrategy()), HILL_DWARF(new HillDwarfBonusStrategy()), HALFLING(new HalflingBonusStrategy()), ELF(new ElfBonusStrategy());
 
     private final BonusStrategy bonusStrategy;
 
@@ -19,6 +22,10 @@ public enum Race {
 
     public Speed getSpeed() {
         return bonusStrategy.getSpeed();
+    }
+
+    public Set<Language> getLanguages() {
+        return bonusStrategy.getLanguages();
     }
 
     private static class BonusStrategy {
@@ -66,6 +73,12 @@ public enum Race {
         public Speed getSpeed() {
             return new Speed(30, 15, 15);
         }
+
+        public Set<Language> getLanguages() {
+            Set<Language> languages = new HashSet<>();
+            languages.add(Language.COMMON);
+            return languages;
+        }
     }
 
     private static class HumanBonusStrategy extends BonusStrategy {
@@ -99,6 +112,8 @@ public enum Race {
             return 1;
         }
 
+
+
     }
 
     private static class DwarfBonusStrategy extends BonusStrategy {
@@ -109,6 +124,12 @@ public enum Race {
 
         public Speed getSpeed() {
             return new Speed(20, 10, 10);
+        }
+
+        public Set<Language> getLanguages() {
+            Set<Language> languages = super.getLanguages();
+            languages.add(Language.DWARVISH);
+            return languages;
         }
     }
 
@@ -129,5 +150,29 @@ public enum Race {
         public Size getSize() {
             return Size.SMALL;
         }
+
+        public Speed getSpeed() {
+            return new Speed(25, 12, 12);
+        }
+
+        public Set<Language> getLanguages() {
+            Set<Language> languages = super.getLanguages();
+            languages.add(Language.HALFLING);
+            return languages;
+        }
+    }
+
+    private static class ElfBonusStrategy extends BonusStrategy {
+        @Override
+        public int getDexterityBonus() {
+            return 2;
+        }
+
+        public Set<Language> getLanguages() {
+            Set<Language> languages = super.getLanguages();
+            languages.add(Language.ELVISH);
+            return languages;
+        }
+
     }
 }
