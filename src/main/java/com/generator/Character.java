@@ -1,5 +1,7 @@
 package com.generator;
 
+import com.generator.race.Race;
+
 import java.util.*;
 
 public final class Character {
@@ -63,4 +65,15 @@ public final class Character {
     public int getLevel() {
         return level;
     }
+
+    public Set<Skill> getProficiencies() {
+        Set<Skill> proficiencies = new HashSet<>();
+        proficiencies.addAll(race.getProficiencies());
+        //TODO add background/class proficiencies here
+        return proficiencies;
+    }
+
+
+
+
 }

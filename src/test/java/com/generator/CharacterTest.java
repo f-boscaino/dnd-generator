@@ -1,5 +1,6 @@
 package com.generator;
 
+import com.generator.race.Race;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -7,6 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import static com.generator.Language.*;
+import static com.generator.Skill.PERCEPTION;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -22,6 +24,15 @@ public class CharacterTest {
     public void aNewCharacterShouldBeLevel1() {
         //Then
         assertEquals(1, character.getLevel());
+    }
+
+    @Test
+    public void aHumanCharacterShouldHaveAHumanRace(){
+        //Given
+        character.setRace(Race.HUMAN);
+
+        //Then
+        assertEquals("Human", character.getRace().getName());
     }
 
     @Test
@@ -148,6 +159,20 @@ public class CharacterTest {
         assertEquals(2, languages.size());
         assertTrue(languages.contains(COMMON));
         assertTrue(languages.contains(DWARVISH));
+    }
+
+    @Test
+    public void anHumanShouldHaveNoStartingProficiencies() {
+        character.setRace(Race.HUMAN);
+        Set<Skill> skills = character.getProficiencies();
+        assertEquals(0, skills.size());
+    }
+    @Test
+    public void anElfShouldBeProficientInPerception() {
+        character.setRace(Race.ELF);
+        Set<Skill> skills = character.getProficiencies();
+        assertEquals(1, skills.size());
+        assertTrue(skills.contains(PERCEPTION));
     }
 
 

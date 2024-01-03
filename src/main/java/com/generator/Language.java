@@ -4,5 +4,6 @@ public enum Language {
     COMMON,
     ELVISH,
     DWARVISH,
+    ORC,
     HALFLING
 }
