@@ -32,4 +32,12 @@ public enum Skill {
         this.name = name;
         this.ability = ability;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public Ability getAbility() {
+        return ability;
+    }
 }

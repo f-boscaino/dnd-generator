@@ -74,6 +74,10 @@ public final class Character {
     }
 
 
-
-
+    public Set<WeaponProficiency> getWeaponProficiencies() {
+        Set<WeaponProficiency> proficiencies = new HashSet<>();
+        proficiencies.addAll(race.getWeaponProficiencies());
+        //TODO add class proficiencies here
+        return proficiencies;
+    }
 }

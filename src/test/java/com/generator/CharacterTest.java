@@ -9,8 +9,7 @@ import java.util.UUID;
 
 import static com.generator.Language.*;
 import static com.generator.Skill.PERCEPTION;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CharacterTest {
     private Character character;
@@ -163,17 +162,57 @@ public class CharacterTest {
 
     @Test
     public void anHumanShouldHaveNoStartingProficiencies() {
+        //Given
         character.setRace(Race.HUMAN);
+
+        //When
         Set<Skill> skills = character.getProficiencies();
+
+        //Then
         assertEquals(0, skills.size());
     }
     @Test
     public void anElfShouldBeProficientInPerception() {
+        //Given
         character.setRace(Race.ELF);
+
+        //When
         Set<Skill> skills = character.getProficiencies();
+
+        //Then
         assertEquals(1, skills.size());
         assertTrue(skills.contains(PERCEPTION));
     }
 
+    @Test
+    public void aDwarfShouldHaveProficiencyWithDwarvenWeapons() {
+        //Given
+        character.setRace(Race.DWARF);
 
+        //When
+        Set<WeaponProficiency> weapons = character.getWeaponProficiencies();
+
+        //Then
+        assertEquals(4, weapons.size());
+        assertTrue(weapons.contains(WeaponProficiency.BATTLEAXE));
+        assertTrue(weapons.contains(WeaponProficiency.HANDAXE));
+        assertTrue(weapons.contains(WeaponProficiency.LIGHT_HAMMER));
+        assertTrue(weapons.contains(WeaponProficiency.WARHAMMER));
+    }
+
+    @Test
+    public void anElfShouldHaveProficiencyWithElvenWeapons() {
+        //Given
+        character.setRace(Race.ELF);
+
+        //When
+        Set<WeaponProficiency> weapons = character.getWeaponProficiencies();
+
+        //Then
+        assertEquals(4, weapons.size());
+        assertTrue(weapons.contains(WeaponProficiency.LONGSWORD));
+        assertTrue(weapons.contains(WeaponProficiency.SHORTSWORD));
+        assertTrue(weapons.contains(WeaponProficiency.LONGBOW));
+        assertTrue(weapons.contains(WeaponProficiency.SHORTBOW));
+    }
 }

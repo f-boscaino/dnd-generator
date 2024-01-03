@@ -3,6 +3,7 @@ package com.generator.race;
 import com.generator.*;
 import com.generator.race.bonus.*;
 
+import java.util.Collection;
 import java.util.Set;
 
 public enum Race {
@@ -43,5 +44,9 @@ public enum Race {
 
     public Set<Skill> getProficiencies() {
         return bonusStrategy.getProficiencies();
+    }
+
+    public Collection<WeaponProficiency> getWeaponProficiencies() {
+        return bonusStrategy.getWeaponProficiencies();
     }
 }

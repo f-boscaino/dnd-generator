@@ -5,5 +5,8 @@ public enum Language {
     ELVISH,
     DWARVISH,
     ORC,
+    DRACONIC,
+    GNOMISH,
+    INFERNAL,
     HALFLING
 }

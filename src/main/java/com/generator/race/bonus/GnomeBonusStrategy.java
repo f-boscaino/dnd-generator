@@ -6,9 +6,9 @@ import com.generator.Speed;
 
 import java.util.Set;
 
-public class HalflingBonusStrategy extends BonusStrategy {
+public class GnomeBonusStrategy extends BonusStrategy {
     @Override
-    public int getDexterityBonus() {
+    public int getIntelligenceBonus() {
         return 2;
     }
 
@@ -23,7 +23,7 @@ public class HalflingBonusStrategy extends BonusStrategy {
 
     public Set<Language> getLanguages() {
         Set<Language> languages = super.getLanguages();
-        languages.add(Language.HALFLING);
+        languages.add(Language.GNOMISH);
         return languages;
     }
 }

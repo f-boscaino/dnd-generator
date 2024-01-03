@@ -48,7 +48,7 @@ public class BonusStrategy {
     }
 
     public Speed getSpeed() {
-        return new Speed(30, 15, 15);
+        return new Speed(30);
     }
 
     public Set<Language> getLanguages() {
@@ -58,6 +58,10 @@ public class BonusStrategy {
     }
 
     public Set<Skill> getProficiencies() {
+        return new HashSet<>();
+    }
+
+    public Set<WeaponProficiency> getWeaponProficiencies() {
         return new HashSet<>();
     }
 }
