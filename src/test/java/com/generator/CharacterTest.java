@@ -215,4 +215,18 @@ public class CharacterTest {
         assertTrue(weapons.contains(WeaponProficiency.LONGBOW));
         assertTrue(weapons.contains(WeaponProficiency.SHORTBOW));
     }
+
+    @Test
+    public void aMountainDwarfShouldHaveProficiencyWithLightAndMediumArmor() {
+        //Given
+        character.setRace(Race.MOUNTAIN_DWARF);
+
+        //When
+        Set<ArmorProficiency> armors = character.getArmorProficiencies();
+
+        //Then
+        assertEquals(2, armors.size());
+        assertTrue(armors.contains(ArmorProficiency.LIGHT));
+        assertTrue(armors.contains(ArmorProficiency.MEDIUM));
+    }
 }

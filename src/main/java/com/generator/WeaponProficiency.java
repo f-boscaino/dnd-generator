@@ -8,8 +8,9 @@ public enum WeaponProficiency {
     LONGSWORD("Longsword"),
     SHORTSWORD("Shortsword"),
     LONGBOW("Longbow"),
-    SHORTBOW("Shortbow");
-
+    SHORTBOW("Shortbow"),
+    SIMPLE("Simple Weapons"),
+    MARTIAL("Martial Weapons");
 
     private final String name;
 

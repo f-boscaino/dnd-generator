@@ -8,10 +8,26 @@ import java.util.Set;
 
 public enum Race {
     HUMAN(new HumanBonusStrategy(), "Human"),
+
     DWARF(new DwarfBonusStrategy(), "Dwarf"),
+    MOUNTAIN_DWARF(new MountainDwarfBonusStrategy(), "Mountain Dwarf"),
     HILL_DWARF(new HillDwarfBonusStrategy(), "Hill Dwarf"),
+
     HALFLING(new HalflingBonusStrategy(), "Halfling"),
-    ELF(new ElfBonusStrategy(), "Elf");
+    LIGHTFOOT_HALFLING(new LightfootHalflingBonusStrategy(), "Lightfoot Halfling"),
+    STOUT_HALFLING(new StoutHalflingBonusStrategy(), "Stout Halfling"),
+
+    GNOME(new GnomeBonusStrategy(), "Gnome"),
+    FOREST_GNOME(new ForestGnomeBonusStrategy(), "Forest Gnome"),
+    ROCK_GNOME(new RockGnomeBonusStrategy(), "Rock Gnome"),
+
+    DRAGONBORN(new DragonbornBonusStrategy(), "Dragonborn"),
+    HALF_ORC(new HalfOrcBonusStrategy(), "HalfOrc"),
+    TIEFLING(new TieflingBonusStrategy(), "Tiefling"),
+
+    ELF(new ElfBonusStrategy(), "Elf"),
+    HIGH_ELF(new HighElfBonusStrategy(), "High Elf"),
+    WOOD_ELF(new WoodElfBonusStrategy(), "Wood Elf");
 
     private final BonusStrategy bonusStrategy;
 
@@ -48,5 +64,9 @@ public enum Race {
 
     public Collection<WeaponProficiency> getWeaponProficiencies() {
         return bonusStrategy.getWeaponProficiencies();
+    }
+
+    public Collection<ArmorProficiency> getArmorProficiencies() {
+        return bonusStrategy.getArmorProficiencies();
     }
 }

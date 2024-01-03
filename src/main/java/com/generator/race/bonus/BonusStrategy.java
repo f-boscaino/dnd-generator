@@ -64,4 +64,8 @@ public class BonusStrategy {
     public Set<WeaponProficiency> getWeaponProficiencies() {
         return new HashSet<>();
     }
+
+    public Set<ArmorProficiency> getArmorProficiencies() {
+        return new HashSet<>();
+    }
 }

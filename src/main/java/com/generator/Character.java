@@ -80,4 +80,11 @@ public final class Character {
         //TODO add class proficiencies here
         return proficiencies;
     }
+
+    public Set<ArmorProficiency> getArmorProficiencies() {
+        Set<ArmorProficiency> proficiencies = new HashSet<>();
+        proficiencies.addAll(race.getArmorProficiencies());
+        //TODO add class proficiencies here
+        return proficiencies;
+    }
 }
