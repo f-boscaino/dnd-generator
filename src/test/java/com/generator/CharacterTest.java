@@ -4,6 +4,7 @@ import com.generator.race.Race;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -201,9 +202,9 @@ public class CharacterTest {
     }
 
     @Test
-    public void anElfShouldHaveProficiencyWithElvenWeapons() {
+    public void anHighElfShouldHaveProficiencyWithElvenWeapons() {
         //Given
-        character.setRace(Race.ELF);
+        character.setRace(Race.HIGH_ELF);
 
         //When
         Set<WeaponProficiency> weapons = character.getWeaponProficiencies();
@@ -228,5 +229,49 @@ public class CharacterTest {
         assertEquals(2, armors.size());
         assertTrue(armors.contains(ArmorProficiency.LIGHT));
         assertTrue(armors.contains(ArmorProficiency.MEDIUM));
+    }
+
+    @Test
+    public void aDwarfShouldHaveDarkvision() {
+        //Given
+        character.setRace(Race.DWARF);
+
+        //When
+        List<CharacterBonus> bonus = character.getBonusList();
+
+        //Then
+        assertEquals(3, bonus.size());
+        List<CharacterBonus> expectedBonus = bonus.stream().filter(el -> el.name().equals("Darkvision")).toList();
+        assertEquals(1, expectedBonus.size());
+    }
+
+    @Test
+    public void aHillDwarfShouldHaveDarkvisionToo() {
+        //Given
+        character.setRace(Race.HILL_DWARF);
+
+        //When
+        List<CharacterBonus> bonus = character.getBonusList();
+
+        //Then
+        assertEquals(3, bonus.size());
+        List<CharacterBonus> expectedBonus = bonus.stream().filter(el -> el.name().equals("Darkvision")).toList();
+        assertEquals(1, expectedBonus.size());
+    }
+
+    @Test
+    public void aHighElfShouldHaveMoreBonusThanANormalElf() {
+        //Given
+        character.setRace(Race.ELF);
+        Character woodElf = new Character(UUID.randomUUID());
+        woodElf.setRace(Race.WOOD_ELF);
+
+        //When
+        List<CharacterBonus> elfBonus = character.getBonusList();
+        List<CharacterBonus> woodElfBonus = woodElf.getBonusList();
+
+        //Then
+        assertEquals(3, elfBonus.size());
+        assertEquals(4, woodElfBonus.size());
     }
 }

@@ -87,4 +87,10 @@ public final class Character {
         //TODO add class proficiencies here
         return proficiencies;
     }
+
+    public List<CharacterBonus> getBonusList() {
+        List<CharacterBonus> bonusList = new ArrayList<>();
+        bonusList.addAll(race.getBonusList());
+        return bonusList;
+    }
 }

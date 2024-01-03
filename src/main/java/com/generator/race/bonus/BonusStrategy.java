@@ -2,7 +2,9 @@ package com.generator.race.bonus;
 
 import com.generator.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class BonusStrategy {
@@ -67,5 +69,9 @@ public class BonusStrategy {
 
     public Set<ArmorProficiency> getArmorProficiencies() {
         return new HashSet<>();
+    }
+
+    public List<CharacterBonus> getOtherBonus() {
+        return new ArrayList<>();
     }
 }

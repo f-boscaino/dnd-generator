@@ -69,4 +69,8 @@ public enum Race {
     public Collection<ArmorProficiency> getArmorProficiencies() {
         return bonusStrategy.getArmorProficiencies();
     }
+
+    public Collection<CharacterBonus> getBonusList() {
+        return bonusStrategy.getOtherBonus();
+    }
 }
