@@ -1,5 +1,6 @@
 package com.generator;
 
+import com.generator.classes.CharacterClass;
 import com.generator.race.Race;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -176,6 +177,7 @@ public class CharacterTest {
     public void anElfShouldBeProficientInPerception() {
         //Given
         character.setRace(Race.ELF);
+        character.setCharacterClass(CharacterClass.FIGHTER);
 
         //When
         Set<Skill> skills = character.getProficiencies();
